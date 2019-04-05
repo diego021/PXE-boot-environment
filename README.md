@@ -16,7 +16,7 @@ It currently has support for PXE installing:
 
 ## dnsmasq
 
-You can use *dnsmasq.conf* file provided here, take into account the following parameters:
+You can use `*dnsmasq.conf*` file provided here, take into account the following parameters:
 
 ```
 interface=enp2s0                                     # Must configure the server inetrface which will provide DHCP.
@@ -28,7 +28,7 @@ dhcp-boot=net:BIOS,pxelinux.0,pxeserver,192.168.0.3  # Change 192.168.0.3 for yo
 
 Additionally, you can change the other parameters if you know what you are doing.
 
-Also, you can define */etc/dnsmasq.d/address.conf* file in the following format if you want to provide internal domain names:
+Also, you can define `*/etc/dnsmasq.d/address.conf*` file in the following format if you want to provide internal domain names:
 
 ```
 address=/myinternaldomain.com/192.168.0.3
