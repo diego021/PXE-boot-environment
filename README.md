@@ -14,7 +14,7 @@ It currently has support for PXE installing:
 
 # Installation
 
-## dnsmasq
+## DNSMASQ
 
 You can use `dnsmasq.conf` file provided here, take into account the following parameters:
 
@@ -32,4 +32,13 @@ Also, you can define `/etc/dnsmasq.d/address.conf` file in the following format 
 
 ```
 address=/myinternaldomain.com/192.168.0.3
+address=/mypxeserver.local/192.168.0.3
 ```
+
+## TFTP
+
+ TFTP functionallity is given by **dnsmasq**, if you are using my ``dnsmasq.conf`` file, just copy this repo's ``ftpd`` folder to ``/var``, full path shoud be ``/var/ftpd``. If not, you can copy ``ftpd`` folder content to wherever your **ftpd-root** config is.
+ 
+ 
+ 
+ 
