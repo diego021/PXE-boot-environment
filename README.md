@@ -10,7 +10,7 @@ Basic files and configuration needed to setup a **PXE boot server**, compatible 
 
 It currently has support for PXE installing:
 
- * Centos 7.6
+* Centos 7.6
 
 # Installation
 
@@ -37,8 +37,27 @@ address=/mypxeserver.local/192.168.0.3
 
 ## TFTP
 
- TFTP functionallity is given by **dnsmasq**, if you are using my ``dnsmasq.conf`` file, just copy this repo's ``ftpd`` folder to ``/var``, full path shoud be ``/var/ftpd``. If not, you can copy ``ftpd`` folder content to wherever your **ftpd-root** config is.
+TFTP functionallity is given by **dnsmasq**, if you are using my `dnsmasq.conf` file, just copy this repo's `ftpd` folder to `/var`, full path shoud be `/var/ftpd`. If not, you can copy `ftpd` folder content to wherever your **ftpd-root** config is.
+
+## NGINX
  
- 
- 
- 
+I will use **nginx** web server to provide local repository.
+
+It's okay if you use default nginx configuration, note that my nginx root folder will be `/var/www/html` for this guide.
+
+You must create `pub` folder in http root:
+
+```
+mkdir /var/www/html/pub
+```
+
+Then, enable autoindex functionality by adding the following to `/etc/nginx/sites-available/default`:
+
+```
+location /pub {
+    autoindex on;
+}
+```
+
+Alternatively, you can just replace `/etc/nginx/sites-available/default` with the one provided here.
+
