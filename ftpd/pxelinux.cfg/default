@@ -1,7 +1,7 @@
 default menu.c32
 prompt 0
-timeout 200
-ONTIMEOUT 1
+timeout 150
+ONTIMEOUT 2
 
 menu title ########## PXE Boot Menu ########## 
 
@@ -9,4 +9,10 @@ label 1
   menu label ^1) Install Centos7-x64
   kernel centos7/vmlinuz
   append initrd=centos7/initrd.img method=http://192.168.0.3/pub ks=http://192.168.0.3/ks.cfg devfs=nomount
+
+label 2
+  menu label ^2) Slax 9.9.0 (live)
+  kernel slax/vmlinuz
+  append initrd=slax/initrfs.img load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 slax.flags=perch,automount
+  ipappend 1
 
