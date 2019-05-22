@@ -8,9 +8,10 @@ Basic files and configuration needed to setup a **PXE boot server**, compatible 
 
 # Support
 
-It currently has support for PXE installing:
+It currently has support for PXE booting:
 
 * Centos 7.6
+* Slax 9.9.0 (legacy boot only)
 
 # Installation
 
@@ -45,16 +46,16 @@ I will use **nginx** web server to provide local repository.
 
 It's okay if you use default nginx configuration, note that my nginx root folder will be `/var/www/html` for this guide.
 
-You must create `pub` folder in http root:
+You must create `slax` and `pub` folders in http root:
 
 ```
-mkdir /var/www/html/pub
+mkdir -p /var/www/html/{slax,pub}
 ```
 
 Then, enable autoindex functionality by adding the following to `/etc/nginx/sites-available/default`:
 
 ```
-location /pub {
+location ~ ^/(slax|pub)/ {
     autoindex on;
 }
 ```
