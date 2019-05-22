@@ -51,7 +51,7 @@ server {
 		try_files $uri $uri/ =404;
 	}
 
-        location /pub {
+        location ~ ^/(slax|pub)/ {
             autoindex on;
         }
 
