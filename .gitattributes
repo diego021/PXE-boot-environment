@@ -1,0 +1,7 @@
+ftpd/clonezilla/filesystem.squashfs filter=lfs diff=lfs merge=lfs -text
+http/slax/05-chromium.sb filter=lfs diff=lfs merge=lfs -text
+http/slax/01-core.sb filter=lfs diff=lfs merge=lfs -text
+http/slax/01-firmware.sb filter=lfs diff=lfs merge=lfs -text
+http/slax/02-xorg.sb filter=lfs diff=lfs merge=lfs -text
+http/slax/03-desktop.sb filter=lfs diff=lfs merge=lfs -text
+http/slax/04-apps.sb filter=lfs diff=lfs merge=lfs -text
