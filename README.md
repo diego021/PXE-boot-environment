@@ -11,6 +11,7 @@ Basic files and configuration needed to setup a **PXE boot server**, compatible 
 It currently has support for PXE booting:
 
 * Centos 7.6
+* Clonezilla 2.6.1-25
 * Slax 9.9.0 (legacy boot only)
 
 # Installation
