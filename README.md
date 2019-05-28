@@ -17,20 +17,21 @@ It currently has support for PXE booting:
 
 * Centos 7.6
 * Clonezilla 2.6.1-25
-* Slax 9.9.0 (legacy boot only)
+* Memtest86+ 5.01 (legacy only)
+* Slax 9.9.0
 
 # Run embedded
 
 To start the server, simply run this:
 
 ```
-./run.sh -start
+./pxe-boot.sh -start
 ```
 
 To stop it:
 
 ```
-./run.sh -kill
+./pxe-boot.sh -kill
 ```
 
 # Installation
