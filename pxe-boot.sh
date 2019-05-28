@@ -9,6 +9,11 @@ function kill() {
     busybox killall -9 busybox 2> /dev/null
 }
 
+function configure_grub() {
+    sed -i -e "s/PXE_SERVER/$PXE_SERVER/g" -e "s/CLIENT/$RANGE_END/" -e "s/ROUTE/$ROUTE/" $SOURCE_DIR/ftpd/grub.cfg
+    sed -i "s/PXE_SERVER/$PXE_SERVER/g" $SOURCE_DIR/ftpd/pxelinux.cfg/default
+}
+
 function network_data() {
     local IFACE=$(ip route | head -n1 | awk '{print $NF}')
     local NET=$(ip addr | grep -E "^    inet .* $IFACE$" | awk '{print $2}')
@@ -50,6 +55,7 @@ case "$1" in
 	      network_data
               run_dnsmasq
               run_httpd
+	      configure_grub
 	      echo 'done'
 	      ;;
     *) echo 'Run with -start or -kill'
