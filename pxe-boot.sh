@@ -1,6 +1,6 @@
 #!/bin/bash
 SOURCE_DIR=$(dirname $(realpath {BASH_SOURCE[0]}))
-PATH=$SOURCE_DIR/bin:$PATH
+PATH=$SOURCE_DIR/bin
 LD_LIBRARY_PATH=$SOURCE_DIR/lib
 export LD_LIBRARY_PATH
 
@@ -10,17 +10,17 @@ function kill() {
 }
 
 function configure_grub() {
-    sed -i -e "s/PXE_SERVER/$PXE_SERVER/g" -e "s/CLIENT/$RANGE_END/" -e "s/ROUTE/$ROUTE/" $SOURCE_DIR/ftpd/grub.cfg
-    sed -i "s/PXE_SERVER/$PXE_SERVER/g" $SOURCE_DIR/ftpd/pxelinux.cfg/default
+    busybox sed -i -e "s/PXE_SERVER/$PXE_SERVER/g" -e "s/CLIENT/$RANGE_END/" -e "s/ROUTE/$ROUTE/" $SOURCE_DIR/ftpd/grub.cfg
+    busybox sed -i "s/PXE_SERVER/$PXE_SERVER/g" $SOURCE_DIR/ftpd/pxelinux.cfg/default
 }
 
 function network_data() {
-    local IFACE=$(ip route | head -n1 | awk '{print $NF}')
-    local NET=$(ip addr | grep -E "^    inet .* $IFACE$" | awk '{print $2}')
-    PXE_SERVER=$(echo $NET | cut -d'/' -f1)
-    ROUTE=$(ip route | head -n1 | awk '{print $3}')
-    RANGE_START=$(echo $PXE_SERVER | awk -F. '{printf "%d.%d.%d.%d", $1,$2,$3,120}')
-    RANGE_END=$(echo $PXE_SERVER | awk -F. '{printf "%d.%d.%d.%d", $1,$2,$3,180}')
+    local IFACE=$(busybox ip route | busybox head -n1 | busybox awk '{print $NF}')
+    local NET=$(busybox ip addr | busybox grep -E "^    inet .* $IFACE$" | busybox awk '{print $2}')
+    PXE_SERVER=$(busybox echo $NET | busybox cut -d'/' -f1)
+    ROUTE=$(busybox ip route | busybox head -n1 | busybox awk '{print $3}')
+    RANGE_START=$(busybox echo $PXE_SERVER | busybox awk -F. '{printf "%d.%d.%d.%d", $1,$2,$3,120}')
+    RANGE_END=$(busybox echo $PXE_SERVER | busybox awk -F. '{printf "%d.%d.%d.%d", $1,$2,$3,180}')
 }
 
 function run_dnsmasq() {
