@@ -15,7 +15,7 @@ function configure_grub() {
 }
 
 function network_data() {
-    local IFACE=$(busybox ip route | busybox head -n1 | busybox awk '{print $NF}')
+    local IFACE=$(busybox ip route | busybox head -n1 | busybox awk '{print $5}')
     local NET=$(busybox ip addr | busybox grep -E "^    inet .* $IFACE$" | busybox awk '{print $2}')
     PXE_SERVER=$(busybox echo $NET | busybox cut -d'/' -f1)
     ROUTE=$(busybox ip route | busybox head -n1 | busybox awk '{print $3}')
