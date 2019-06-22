@@ -1,7 +1,7 @@
 default menu.c32
 prompt 0
 timeout 150
-ontimeout 3
+ontimeout 4
 
 menu title ########## PXE Boot Menu ########## 
 
@@ -16,12 +16,23 @@ label 2
   append initrd=clonezilla/initrd.img boot=live union=overlay username=user config components quiet noswap edd=on nomodeset noeject locales= keyboard-layouts= ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ip= net.ifnames=0  splash i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=1 fetch=tftp://PXE_SERVER/clonezilla/filesystem.squashfs
 
 label 3
-  menu label ^3) Slax 9.9.0 (x64 live)
+  menu label ^3) Debian 9 (x64)
+  kernel debian/linux
+  append vga=788 initrd=debian/initrd.gz
+
+label 4
+  menu label ^4) Slax 9.9.0 (x64 live)
   kernel slax/vmlinuz
   append initrd=slax/initrfs.img load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 slax.flags=perch,automount
   ipappend 1
 
-label 4
-  menu label ^4) Memtest86+ 5.01
+label 5
+  menu label ^5) Windows 10 (x64)
+  kernel memdisk
+  initrd win10/winpe.iso
+  append iso raw
+
+label 6
+  menu label ^6) Memtest86+ 5.01
   kernel memtest/memtest86
 
