@@ -17,6 +17,7 @@ It currently has support for PXE booting:
 
 * Centos 7.6
 * Clonezilla 2.6.1-25
+* Debian 9
 * Memtest86+ 5.01 (legacy only)
 * Slax 9.9.0
 
