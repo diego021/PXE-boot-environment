@@ -20,6 +20,7 @@ It currently has support for PXE booting:
 * Debian 9
 * Memtest86+ 5.01 (legacy only)
 * Slax 9.9.0
+* Windows PE (legacy only)
 
 # Run embedded
 

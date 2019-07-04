@@ -7,11 +7,12 @@ export LD_LIBRARY_PATH
 function kill() {
     busybox killall -9 dnsmasq 2> /dev/null
     busybox killall -9 busybox 2> /dev/null
+    busybox rm -f $SOURCE_DIR/ftpd/grub.cfg $SOURCE_DIR/ftpd/pxelinux.cfg/default
 }
 
 function configure_grub() {
-    busybox sed -i -e "s/PXE_SERVER/$PXE_SERVER/g" -e "s/CLIENT/$RANGE_END/" -e "s/ROUTE/$ROUTE/" $SOURCE_DIR/ftpd/grub.cfg
-    busybox sed -i "s/PXE_SERVER/$PXE_SERVER/g" $SOURCE_DIR/ftpd/pxelinux.cfg/default
+    busybox sed -e "s/PXE_SERVER/$PXE_SERVER/g" -e "s/CLIENT/$RANGE_END/" -e "s/ROUTE/$ROUTE/" $SOURCE_DIR/ftpd/.grub.cfg > $SOURCE_DIR/ftpd/grub.cfg
+    busybox sed "s/PXE_SERVER/$PXE_SERVER/g" $SOURCE_DIR/ftpd/pxelinux.cfg/.default > $SOURCE_DIR/ftpd/pxelinux.cfg/default
 }
 
 function network_data() {
