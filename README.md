@@ -5,7 +5,7 @@ Embedded **PXE boot server**, compatible with both **Legacy Boot** and **UEFI**.
 # Requirements
 
 Embedded:
-* None (busybox and dnsmasq embedded)
+* None
 
 Local install:
 * dnsmasq
@@ -51,9 +51,9 @@ dhcp-boot=net:UEFI,grubx64.efi,pxeserver,192.168.0.3 # Change 192.168.0.3 for yo
 dhcp-boot=net:BIOS,pxelinux.0,pxeserver,192.168.0.3  # Change 192.168.0.3 for your server IP.
 ```
 
-Additionally, you can change other parameters if you know what you are doing.
+Additionally, it's possible to change other parameters if you know what you are doing.
 
-Also, you can define `/etc/dnsmasq.d/address.conf` file in the following format if you want to provide internal domain names:
+You can define `/etc/dnsmasq.d/address.conf` file in the following format if you want to provide internal domain names:
 
 ```
 address=/myinternaldomain.com/192.168.0.3
@@ -76,7 +76,7 @@ You must create `slax` and `pub` folders in http root:
 mkdir -p /var/www/html/{slax,pub}
 ```
 
-Then, enable autoindex functionality by adding the following to `/etc/nginx/sites-available/default`:
+Then, it's recommended to enable autoindex functionality by adding the following to `/etc/nginx/sites-available/default`:
 
 ```
 location ~ ^/(slax|pub)/ {
@@ -84,5 +84,4 @@ location ~ ^/(slax|pub)/ {
 }
 ```
 
-Alternatively, you can just replace `/etc/nginx/sites-available/default` with the one provided here.
-
+Or you can just replace `/etc/nginx/sites-available/default` with the one provided here.
